@@ -48,8 +48,7 @@ exports.config = {
         //
         browserName: 'chrome',
         chromeOptions: {
-            // args: ['--headless', '--disable-gpu', '--window-size=1280,800'],
-            // binary: '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+            args: ['--headless', '--disable-gpu', '--window-size=1280,800'],
         }
     }],
     //
@@ -114,7 +113,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // services: [],//
+    services: ['selenium-standalone'],//
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: http://webdriver.io/guide/testrunner/frameworks.html
@@ -141,6 +140,7 @@ exports.config = {
         expectationResultHandler: function(passed, assertion) {
             // do something
         }
+
     },
     
     //
