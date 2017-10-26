@@ -1,0 +1,5 @@
+node_modules/
+assertionError*.png
+errorShots
+config.js
+.vscode/
