@@ -33,10 +33,36 @@ describe('webdriver.io page', () => {
 Run your test by typing `./node_modules/.bin/wdio` into the terminal. After several seconds, perhaps as many as 30, you should get this output in the terminal: `1 passing (21.20s)`. In the meantime you probably saw Firefox pop up in your dock, though it's in the background by default.
 
 ### Testing GitHub.com
+Create a file name `config.js`, and put this code in there:
 
+```javascript
+exports.module = {
+  email: 'my@email.com',
+  password: 'mypassword',
+  url: 'https://github.com/',
+  username: 'myusername',
+}
+```
+and in `spec.js` put this at the top, `const settings = require('../../config.js').module;`.
+
+The below code will navigate to GitHub, login with your credentials that you put in `config.js`, and assert that your username is displayed in the top left of the page.
+```javascript
+describe('GitHub', () => {
+  it('navigates to GitHub', () => {
+    browser.url(settings.url);
+    browser.click("a[href='/login']");
+    browser.setValue('input#login_field', settings.email);
+    browser.setValue('input#password', settings.password);
+    browser.click("[value='Sign in'][type='submit']")
+    const username = browser.getText('span.js-select-button');
+    assert.equal(username, settings.username);
+  });
+```
+
+Use this pattern to also navigate to a repo, such as your forked wdioPractice repo.
 
 ## Further configuration
-Go to wdio.conf.js and search for 'capabilities'. Here's where you can change [lots of stuff](https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities), including the browser you want to use by adding `browserName: 'chrome',` inside the capabilities object. You can also add chromeOptions like so, 
+Go to wdio.conf.js and search for 'capabilities'. Here's where you can change [lots of stuff](https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities), including the browser you want to use by adding `browserName: 'chrome',` inside the capabilities object. You can also add chromeOptions like so,
 ```javascript
 chromeOptions: {
     args: ['--headless', '--disable-gpu', '--window-size=1280,800']
@@ -55,11 +81,10 @@ expectationResultHandler: (passed, assertion) => {
 ```
 
 ## Using WebdriverCSS to make ART easier
-
-search for WebdriverCSS in wdio.conf.js.
+For more info, see the [GitHub repo](https://github.com/webdriverio/webdrivercss).
 
 ## Better reporting with Allure
 https://medium.com/@boriscoder/setting-up-selenium-tests-with-webdriver-io-cc7fc3c86629
 
 ## Using cloud services
-http://webdriver.io/guide/usage/cloudservices.html
+You can use wdio with [cloud services](http://webdriver.io/guide/usage/cloudservices.html) such as Sauce Labs, Travis CI, BrowserStack, and TestingBot.
