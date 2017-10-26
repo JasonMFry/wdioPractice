@@ -23,7 +23,6 @@ describe('GitHub', () => {
     browser.setValue('input#password', settings.password);
     browser.click("[value='Sign in'][type='submit']")
     const username = browser.getText('span.js-select-button');
-    console.log(`username is ${username}`);
     assert.equal(username, settings.username);
   });
 
@@ -38,10 +37,9 @@ describe('GitHub', () => {
   it('creates a new issue', () => {
     const sampleIssueTitle = 'Test Issue';
     const sampleIssueComment = 'Test Comment';
-    browser.click("[href='/JasonMFry/wdioPractice/issues']");
-    // browser.waitForVisible(".btn-primary[href='/JasonMFry/wdioPractice/issues/new']", 2000);
-    browser.click(".btn-primary[href='/JasonMFry/wdioPractice/issues/new']");
-    // browser.waitForVisible("[name='issue[title]']", 2000);
+    browser.click("nav [href$='/issues']");
+    // browser.debug();
+    browser.click(".btn-primary[href$='/wdioPractice/issues/new']");
     browser.setValue("[name='issue[title]']", sampleIssueTitle);
     browser.setValue(".js-improved-comment-field", sampleIssueComment);
     browser.click(".btn-primary[data-disable-with='']");
