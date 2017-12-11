@@ -11,7 +11,7 @@ Next you need to setup your config file. You have two options, either the manual
 
 Lastly, you'll need to get the [selenium server setup](http://webdriver.io/guide/services/selenium-standalone.html). You can set it up such that you have to manually start the server before you run your tests, or such that it runs automatically when running tests. We're going to do the second way :) Type `npm install wdio-selenium-standalone-service --save-dev` into the terminal. Now go to your wdio.conf.js file and search for the word `services` until you find this line, around line 117, `// services: [],//`. Uncomment it and modify it to look like this, `services: ['selenium-standalone']`.
 
-If the test fails because you don't have Java downloaded, then [go download it](https://www.java.com/en/download/manual.jsp).
+If the test fails because you don't have Java downloaded, then [go download the JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
 ## Writing and running tests
 
