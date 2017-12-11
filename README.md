@@ -36,7 +36,7 @@ Run your test by typing `./node_modules/.bin/wdio` into the terminal. After seve
 Create a file name `config.js`, and put this code in there:
 
 ```javascript
-exports.module = {
+module.exports = {
   email: 'my@email.com',
   password: 'mypassword',
   url: 'https://github.com/',
