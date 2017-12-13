@@ -5,7 +5,7 @@ I'll be walking you through how to get WebdriverIO setup on your system. wdio's 
 
 This walkthrough assumes you have [Node.js](http://nodejs.org/), [NPM](https://www.npmjs.org/), [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html), and [Firefox](https://www.mozilla.org/en-US/firefox/new/) installed on your machine. Once those are installed, install WebdriverIO locally with `npm install webdriverio --save-dev`.
 
-Now we're going to install GeckoDriver and ChromeDriver so we can run tests on Firefox and Chrome. On Mac, install both of these using [homebrew](https://brew.sh/) by typing `brew install geckodriver` and then `brew install chromedriver` into the terminal. Using homebrew instead of other methods primarily skips the step where you have to put both of the drivers into your PATH.
+Now we're going to install GeckoDriver and ChromeDriver so we can run tests on Firefox and Chrome. Install both of these with NPM locally if you'd like, or globally like so, `npm install -g chromedriver geckodriver`. Using NPM instead of other methods primarily skips the step where you have to put both of the drivers into your PATH, which isn't difficult but some find it intimidating.
 
 Next you need to setup your config file. You have two options, either the manual way, or using [wdio's walkthrough](http://webdriver.io/guide.html#Let’s-get-serious). We'll start with the walkthrough and then later make some manual changes. To start the walkthrough type `./node_modules/.bin/wdio config` into the terminal. It will ask you several questions. If you're not sure what to answer, just use the answer they suggest from the wdio walkthrough link above. And don't worry, you can change the answers manually later.
 
